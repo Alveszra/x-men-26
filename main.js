@@ -17,7 +17,7 @@
                 window.scrollTo({top: 0, behavior: 'smooth'})
             }
 
-            som.currenTime = 0 
+            som.currentTime = 0 
             som.play()
 
             // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO

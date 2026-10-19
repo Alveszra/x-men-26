@@ -1,83 +1,284 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>INSTITUTO XAVIER PARA SUPERDOTADOS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsivo.css">   
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsivo.css" />
+  </head>
+  <body>
     <header class="cabecalho">
-        <img class="logo" src="img/logo.svg" alt="Logo do X-men">
+      <img class="logo" src="img/logo.svg" alt="Logo do X-men" />
     </header>
     <audio id="tema" autoplay loop>
-        <source src="sound/tema.mp3" type="audio/mpeg">
+      <source src="sound/tema.mp3" type="audio/mpeg" />
     </audio>
     <audio id="btn">
-        <source src="sound/btn.mp3" type="audio/mpeg">
+      <source src="sound/btn.mp3" type="audio/mpeg" />
     </audio>
+
+
+
     <main class="selecao-de-personagens">
-        <section class="personagens">
-            <h1 class="titulo">Selecione um personagem</h1>
-            <ul class="lista-de-personagens">
-                <li class="personagem selecionado" id="ciclope" data-name="Ciclope" 
-                data-description="Ele tem o poder de diparar rajadas ópticas por um acidente com ele
+
+        <div class="grid p1p2">
+        <section class="personagem-selecionado" id="p1">
+          
+        <img
+          class="personagem-grande"
+          src="img/card-noturno.png"
+          alt="Personagem Selecionado"
+        />
+        <div class="informacoes-personagem">
+          <h1 class="nome-personagem" id="nome-personagem">Ciclope</h1>
+          <p class="descricao-personagem" id="descricao-personagem">
+            Ele tem o poder de diparar rajadas ópticas por um acidente com ele
+            quando criança, mas não consegue controlá-los
+          </p>
+        </div>
+      </section>
+
+       <section class="personagem-selecionado2" id="p2">
+        <img
+          class="personagem-grande"
+          src="img/imagem-grande-Grazi.png"
+          alt="Personagem Selecionado"
+        />
+        <div class="informacoes-personagem">
+          <h1 class="nome-personagem" id="nome-personagem">Ciclope</h1>
+          <p class="descricao-personagem" id="descricao-personagem">
+            Ele tem o poder de diparar rajadas ópticas por um acidente com ele
+            quando criança, mas não consegue controlá-los
+          </p>
+        </div>
+      </section>
+        </div>
+
+
+      <div class="grid">
+      <section class="personagens" data-player="1">
+        <h1 class="titulo">Selecione um personagem P1</h1>
+        <ul class="lista-de-personagens">
+          <li
+            class="personagem selecionado"
+            id="ciclope"
+            data-name="Ciclope"
+            data-description="Ele tem o poder de diparar rajadas ópticas por um acidente com ele
                 quando criança, mas não consegue controlá-los">
-                    <img src="img/card-ciclope.jpg" alt="Personagem Ciclope">
-                </li>
-                <li class="personagem " id="jean-grey" data-name="jean-grey" 
-                data-description="Jean Grey é uma mutante nível ômega e o princiapl avatar da
+            <img
+              class="gay"
+              src="img/card-ciclope.jpg"
+              alt="Personagem Ciclope"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="jean-grey"
+            data-name="jean-grey"
+            data-description="Jean Grey é uma mutante nível ômega e o princiapl avatar da
                 força Fenix, no qual menifesta poderes cósmicos. A telepatia e telecinese">
-                    <img src="img/card-jean-grey.jpg" alt="Personagem jean-grey">
-                </li>
-                <li class="personagem" id="lince-negra" data-name="lince-negra" 
-                data-description="Ela tem o poder de atravessar matéria sólida, campos de energia, rajadas ópticas,
+            <img
+              class="gay"
+              src="img/card-jean-grey.jpg"
+              alt="Personagem jean-grey"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="lince-negra"
+            data-name="lince-negra"
+            data-description="Ela tem o poder de atravessar matéria sólida, campos de energia, rajadas ópticas,
                 continuando intacta, e também tem o poder de andar no ar">
-                    <img src="img/card-lince-negra.jpg" alt="Personagem lince-negra">
-                </li>
-                <li class="personagem" id="tempestade" data-name="tempestade" 
-                data-description="Tem o poder de controlar as forças da natureza, muito poderosa ela produzir
+            <img
+              class="gay"
+              src="img/card-lince-negra.jpg"
+              alt="Personagem lince-negra"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="tempestade"
+            data-name="tempestade"
+            data-description="Tem o poder de controlar as forças da natureza, muito poderosa ela produzir
                 raios, chuvas, gelos, ventos, neblina, entre outros efeitos">
-                    <img src="img/card-tempestade.jpg" alt="Personagem tempestade">
-                </li>
-                <li class="personagem" id="vampira" data-name="vampira" 
-                data-description="Ela tem o poder de absorver a vitalidade e memória das pessoas que
+            <img
+              class="gay"
+              src="img/card-tempestade.jpg"
+              alt="Personagem tempestade"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="vampira"
+            data-name="vampira"
+            data-description="Ela tem o poder de absorver a vitalidade e memória das pessoas que
                 toca ou no caso dos mutantes, os poderes e a memória, só que temporariamente">
-                    <img src="img/card-vampira.jpg" alt="Personagem vampira">
-                </li>
-                <li class="personagem" id="wolverine" data-name="wolverine" 
-                data-description="Poderes: Garras de Adamantium. Fator de cura regenerativo, Super 
+            <img
+              class="gay"
+              src="img/card-vampira.jpg"
+              alt="Personagem vampira"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="wolverine"
+            data-name="wolverine"
+            data-description="Poderes: Garras de Adamantium. Fator de cura regenerativo, Super 
                 agilidade">
-                    <img src="img/card-wolverine.jpg" alt="Personagem wolverine">
-                </li>
-                <li class="personagem" id="noturno" data-name="noturno" 
-                data-description="Ele é um mutante que nasceu com cauda, orelhas pontudas e com
+            <img
+              class="gay"
+              src="img/card-wolverine.jpg"
+              alt="Personagem wolverine"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="noturno"
+            data-name="noturno"
+            data-description="Ele é um mutante que nasceu com cauda, orelhas pontudas e com
                 poder de se Teletransportar">
-                    <img src="img/card-noturno.jpg" alt="Personagem noturno">
-                </li>
-                <li class="personagem" id="magneto" data-name="magneto" 
-                data-description="Ele tem o poder de magnetocinese, ou seja, controlar objetos
+            <img
+              class="gay"
+              src="img/card-noturno.jpg"
+              alt="Personagem noturno"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="magneto"
+            data-name="magneto"
+            data-description="Ele tem o poder de magnetocinese, ou seja, controlar objetos
                 metalicos e criar campos magnéticos">
-                    <img src="img/card-magneto.jpg" alt="Personagem magneto">
-                </li>
-            </ul>
-        </section>
-        <section class="personagem-selecionado">
-            <img class="personagem-grande" src="img/card-noturno.png" alt="Personagem Selecionado">
-            <div class="informacoes-personagem">
-                <h1 class="nome-personagem" id="nome-personagem">Ciclope</h1>
-                <p class="descricao-personagem" id="descricao-personagem">
-                    Ele tem o poder de diparar rajadas ópticas por um acidente com ele
-                quando criança, mas não consegue controlá-los
-                </p>
-            </div>
-        </section>
+            <img
+              class="gay"
+              src="img/card-magneto.jpg"
+              alt="Personagem magneto"
+            />
+          </li>
+          </ul>
+         </section>
+
+         <section class="personagens" data-player="2">
+        <h1 class="titulo">Selecione um personagem P2</h1>
+        <ul class="lista-de-personagens personagens-senai">
+          <li
+            class="personagem selecionado2"
+            id="grazi"
+            data-name="grazi"
+            data-description="Grazi- Responsável por se as coisas estão ocorrendo tudo certo dentro do ambiente 
+                do Senai e responsável pela união da esquipe assim mantendo todo o trabalho em ordem, seu poder 
+                é liderança que amplifica a coordenação e a capacidade de trabalho fazendo diferentes setores atuarem 
+                como uma única força.">
+            <img class="gay" src="./cards/grazi.png" alt="Personagem grazi" />
+          </li>
+          <li
+            class="personagem "
+            id="brenda"
+            data-name="brenda"
+            data-description="Brenda- secretaria do Senai ajuda os outros como pode e o seu poder e lançar 
+                ondas sônicas de seu estetoscópio e tem uma super audição que consegue identificar pontos vitais 
+                de inimigos.">
+            <img class="gay" src="./cards/brenda.png" alt="Personagem brenda" />
+          </li>
+          <li
+            class="personagem "
+            id="clesio"
+            data-name="clesio"
+            data-description="Clésio- Gerente do Senai, com alta capacidade intelectual consegue montar estratégias
+                 e liderar setores para que seus objetivos sejam concluídos com excelência, seu poder Decreto de Gestão
+                  que cria decretos temporários que reorganizam setores, redistribuem recursos e estabelecem novas regras
+                   dentro de seu domínio.">
+            <img class="gay" src="./cards/clesio.png" alt="Personagem clesio" />
+          </li>
+          <li
+            class="personagem "
+            id="cleverson"
+            data-name="cleverson"
+            data-description="Cleverson- faz parte administrativa do Senai cuidado de grandes contratos 
+                seus poderes vêm de sua força a cada contrato que ele consegue, aumentar sua força, mas a cada 
+                perda sua força diminui.">
+            <img
+              class="gay"
+              src="./cards/cleverson.png"
+              alt="Personagem cleverson"
+            />
+          </li>
+          <li
+            class="personagem "
+            id="elisangela"
+            data-name="elisangela"
+            data-description="Elisangela- Assistente do fiscal, cuida da parte financeira 
+                tendo total capacidade de concluir contratos com excelência, seu poder é o cálculo absoluto se trata 
+                de calcular qualquer soma, dívida e orçamento sem nenhuma taxa de erro.">
+            <img
+              class="gay"
+              src="./cards/elisangela.png"
+              alt="Personagem elisangela"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="janete"
+            data-name="janete"
+            data-description="Janete- faz a parte da segurança do Senai, sua arma e sua tonfa, 
+                onde consegue se defender e atacar atrelado a isso sua tonfa possui uma carga elétrica podendo 
+                disparar ondas elétricas e imbuir eletricidade em sua arma.">
+            <img class="gay" src="./cards/janete.png" alt="Personagem janete" />
+          </li>
+          <li
+            class="personagem "
+            id="jose"
+            data-name="jose"
+            data-description="José- Engenheiro de Segurança, responsável ensino dos que estão cursando 
+                engenharia de segurança aqui no Senai se empenhando para uma boa qualidade de ensino e também 
+                segurança dos alunos, seu poder Visão de Risco enxerga perigos invisíveis, falhas estruturais, 
+                vazamentos, pontos de explosão e qualquer ameaça escondida no ambiente.">
+            <img class="gay" src="./cards/jose.png" alt="Personagem jose" />
+          </li>
+          <li
+            class="personagem"
+            id="gilberto"
+            data-name="gilberto"
+            data-description="Gilberto- técnico de segurança do Senai sempre cuidando da equipe e 
+                trabalhadores do Senai, seus poderes vêm de uma super visão onde consegue perceber diversas 
+                coisas e sua super velocidade onde com muito esforço pode até parar o tempo.">
+            <img
+              class="gay"
+              src="./cards/julberto.png"
+              alt="Personagem gilberto"
+            />
+          </li>
+          <li
+            class="personagem"
+            id="rubens"
+            data-name="rubens"
+            data-description="Janete- faz a parte da segurança do Senai, sua arma e sua tonfa, 
+                onde consegue se defender e atacar atrelado a isso sua tonfa possui uma carga elétrica podendo 
+                disparar ondas elétricas e imbuir eletricidade em sua arma.">
+            <img
+              class="gay"
+              src="./cards/Rubens_card.png"
+              alt="Personagem rubens"
+            />
+          </li>
+        </ul>
+      </section>
+
+      </div>
+
+
+      
+
+
+
     </main>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
