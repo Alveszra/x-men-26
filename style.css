@@ -119,7 +119,7 @@ ul{
     box-shadow: 0px 0px 24px 5px #0271f7;
     
 }
-.gay{
+.card{
     height: 95px;
     width: 62.5px;
     align-items: center;
@@ -127,16 +127,74 @@ ul{
 .personagem selecionado2{
     height: 500px;
     width: 500px;
+    
 }
 
  
 .grid{
     display: flex;
     gap: 150px;
+  
 }
 
 .p1p2{
     gap: 300px;
     margin-left: 100px;
+    padding-bottom: 40px;
+}
 
+
+/* SENAI */
+
+.personagem-selecionado .personagem-grande-senai{
+    width: 400px;
+    height: 400px;
+    align-items: start;
+   
+}
+.personagem-selecionado2 .personagem-grande-senai{
+    width: 227px;
+    height: 341px;
+    align-items: start;
+   
+}
+
+.lista-de-personagens .personagem.selecionado2{
+    box-shadow: 0px 0px 24px 5px #7c2b2b;
+}
+
+
+.opacidade{
+    opacity: 0.2;
+}
+
+.oculto{
+    display: none ;
+}
+.modal{
+    position: relative;
+    display: flex;
+    background-color: #00132C;
+    border-radius: 12px;
+    padding: 15px;
+    justify-content: center;
+    align-items: start;
+    top: auto;
+    left: auto;
+    border-color: #ffffff;
+}
+.modal-conteudo{
+     color: #ffffff;
+     background-color: #00132C;
+     margin: none;
+    align-items: start;
+}
+#btn-confirmar{
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;;
+    background-color: #47f4ff;;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: none;
 }
