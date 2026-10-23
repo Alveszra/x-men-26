@@ -206,5 +206,14 @@ ul{
     border-radius: 10px;
     margin: none;
 }
+#btn-Negar{
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;;
+    background-color: #00132C;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: none;
+}
 
 

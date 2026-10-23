@@ -1,133 +1,129 @@
-const personagens = document.querySelectorAll(".xmen")
-const personagensSenai = document.querySelectorAll(".senai")
-const personasSenai = document.getElementById("personagens-senai")
+const personagens = document.querySelectorAll(".xmen");
+const personagensSenai = document.querySelectorAll(".senai");
+const personasSenai = document.getElementById("personagens-senai");
 
-let p1Confirmado = false
-let p2Confirmado = false
-
-const musica = new Audio("sound/tema.mp3")
-musica.loop = true
-musica.volume = 0.4
-
-document.addEventListener("click", function () {
-    musica.play()
-}, { once: true })
-
-const som = new Audio("sound/btn.mp3")
-
-personagens.forEach(personagem => {
-    personagem.addEventListener('mouseenter', () => {
-
-        if (window.innerWidth < 450) {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
-
-        if(p1Confirmado) return
-
-        som.currentTime = 0
-        som.play()
-
-        // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
-        const personagemSelecionado = document.querySelector('.selecionado')
-
-        // REMOVENDO A CLASSE DE UM PERSONAGEM NAO SELECIONADO
-        personagemSelecionado.classList.remove('selecionado')
-
-        // ADICIONANDO A CLASSE À UM PERSONAGEM SELECIONADO
-        personagem.classList.add('selecionado')
+let p1Confirmado = false;
+let p2Confirmado = false;
 
 
+const musica = new Audio("sound/tema.mp3");
+musica.loop = true;
+musica.volume = 0.4;
 
-        //pegar o elemento do personagem grande 
-        const imagemPersonagemGrande = document.querySelector('.personagem-grande')
+document.addEventListener(
+  "click",
+  function () {
+    musica.play();
+  },
+  { once: true },
+);
 
-        //alterar a imagem do personagem
-        const idPersonagem = personagem.attributes.id.value
+const som = new Audio("sound/btn.mp3");
 
-        imagemPersonagemGrande.src = `./img/card-${idPersonagem}.png`
+  personagens.forEach((personagem) => {
+    personagem.addEventListener("mouseenter", () => {
+      if (window.innerWidth < 450) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
 
-        //alterar o nome do personagem selecionado
-        const nomePersonagem = document.getElementById('nome-personagem')
+      if (p1Confirmado) return;
 
-        nomePersonagem.innerText = personagem.getAttribute('data-name')
+      som.currentTime = 0;
+      som.play();
 
-        //alterar a descrição do personagem selecionado
-        const descricaoPersonagem = document.getElementById('descricao-personagem')
+      // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
+      const personagemSelecionado = document.querySelector(".selecionado");
 
-        descricaoPersonagem.innerText = personagem.getAttribute('data-description')
+      // REMOVENDO A CLASSE DE UM PERSONAGEM NAO SELECIONADO
+      personagemSelecionado.classList.remove("selecionado");
 
+      // ADICIONANDO A CLASSE À UM PERSONAGEM SELECIONADO
+      personagem.classList.add("selecionado");
 
-        personagem.addEventListener("click", () => {
-            if (p1Confirmado) return
+      //pegar o elemento do personagem grande
+      const imagemPersonagemGrande =
+        document.querySelector(".personagem-grande");
 
-            document.getElementById("modal-p1").classList.remove("oculto")
-        })
+      //alterar a imagem do personagem
+      const idPersonagem = personagem.attributes.id.value;
 
-        
-    })
-})
+      imagemPersonagemGrande.src = `./img/card-${idPersonagem}.png`;
 
-let evento = ""
+      //alterar o nome do personagem selecionado
+      const nomePersonagem = document.getElementById("nome-personagem");
 
-if (personagem !== false) {
-    evento = ""
-} else {
-    evento = "mouseenter"
-    personasSenai.classList.remove("opacidade")
-}
+      nomePersonagem.innerText = personagem.getAttribute("data-name");
 
+      //alterar a descrição do personagem selecionado
+      const descricaoPersonagem = document.getElementById(
+        "descricao-personagem",
+      );
 
+      descricaoPersonagem.innerText =
+        personagem.getAttribute("data-description");
 
-const modal = document.querySelector("#modal")
-const btnConfirmar = document.querySelector("#btn-confirmar")
+      personagem.addEventListener("click", () => {
+        if (p1Confirmado) return;
 
-personagem.addEventListener("click", function () {
-    modal.classList.remove(oculto)
-})
-
-
-// SENAI 
-
-personagensSenai.forEach(personagem => {
-    personagem.addEventListener(`${evento}`, () => {
-
-        if (window.innerWidth < 450) {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
-
-        som.currentTime = 0
-        som.play()
-
-        // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
-        const personagemSelecionado = document.querySelector('.selecionado2')
-
-        // REMOVENDO A CLASSE DE UM PERSONAGEM NAO SELECIONADO
-        personagemSelecionado.classList.remove('selecionado2')
-
-        // ADICIONANDO A CLASSE À UM PERSONAGEM SELECIONADO
-        personagem.classList.add('selecionado2')
+        document.getElementById("modal-p1").classList.remove("oculto");
+        document
+          .querySelector(".lista-de-personagens")
+          .classList.add("opacidade");
 
 
-        // QUANDO PASSAR O MOUSE EM CIMA DO PERSONAGEM
-        // VAI TROCAR A IMAGEM, NOME E DESCRIÇÃO
+      });
+    });
+  });
 
-        //pegar o elemento do personagem grande 
-        const imagemPersonagemGrande = document.querySelector('.personagem-grande-senai')
 
-        //alterar a imagem do personagem
-        const idPersonagem = personagem.attributes.id.value
+const modal = document.querySelector("#modal");
+const btnConfirmar = document.querySelector("#btn-confirmar");
+const btnNegar = document.querySelector("#btn-Negar");
 
-        imagemPersonagemGrande.src = `./imagem-grande/imagem-grande-${idPersonagem}.png`
 
-        //alterar o nome do personagem selecionado
-        const nomePersonagem = document.getElementById('nome-personagem-senai')
+// SENAI
 
-        nomePersonagem.innerText = personagem.getAttribute('data-name')
+personagensSenai.forEach((personagem) => {
+  personagem.addEventListener(`${evento}`, () => {
+    if (window.innerWidth < 450) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-        //alterar a descrição do personagem selecionado
-        const descricaoPersonagem = document.getElementById('descricao-personagem-senai')
+    som.currentTime = 0;
+    som.play();
 
-        descricaoPersonagem.innerText = personagem.getAttribute('data-description')
+    // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
+    const personagemSelecionado = document.querySelector(".selecionado2");
 
-    })
-})
+    // REMOVENDO A CLASSE DE UM PERSONAGEM NAO SELECIONADO
+    personagemSelecionado.classList.remove("selecionado2");
+
+    // ADICIONANDO A CLASSE À UM PERSONAGEM SELECIONADO
+    personagem.classList.add("selecionado2");
+
+    // QUANDO PASSAR O MOUSE EM CIMA DO PERSONAGEM
+    // VAI TROCAR A IMAGEM, NOME E DESCRIÇÃO
+
+    //pegar o elemento do personagem grande
+    const imagemPersonagemGrande = document.querySelector(
+      ".personagem-grande-senai",
+    );
+
+    //alterar a imagem do personagem
+    const idPersonagem = personagem.attributes.id.value;
+
+    imagemPersonagemGrande.src = `./imagem-grande/imagem-grande-${idPersonagem}.png`;
+
+    //alterar o nome do personagem selecionado
+    const nomePersonagem = document.getElementById("nome-personagem-senai");
+
+    nomePersonagem.innerText = personagem.getAttribute("data-name");
+
+    //alterar a descrição do personagem selecionado
+    const descricaoPersonagem = document.getElementById(
+      "descricao-personagem-senai",
+    );
+
+    descricaoPersonagem.innerText = personagem.getAttribute("data-description");
+  });
+});
