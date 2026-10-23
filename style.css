@@ -40,6 +40,7 @@ body::before{
 }
 
 .personagem-selecionado{
+    position: relative;
     text-align: center;
     max-height: 530px;
     
@@ -68,7 +69,7 @@ body::before{
 
 
 .selecao-de-personagens{
-    
+    position: relative;
     align-items: end;
     gap: 50px;
     min-height: calc(100vh - 152px);
@@ -169,23 +170,30 @@ ul{
 }
 
 .oculto{
-    display: none ;
+    display: none !important;
 }
-.modal{
-    position: relative;
+.modal, .modal2{
+    position: absolute;
+    background-color:  rgba(16,33,69,0.4);
+    border: #47f4ff solid 3px;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+
     display: flex;
-    background-color: #00132C;
-    border-radius: 12px;
-    padding: 15px;
+
     justify-content: center;
-    align-items: start;
-    top: auto;
-    left: auto;
-    border-color: #ffffff;
+    align-items: center;
+    z-index: 10;
+
+
+
 }
 .modal-conteudo{
      color: #ffffff;
-     background-color: #00132C;
      margin: none;
     align-items: start;
 }
@@ -193,8 +201,10 @@ ul{
     align-items: center;
     justify-content: center;
     color: #ffffff;;
-    background-color: #47f4ff;;
+    background-color: #00132C;
     padding: 5px 10px;
     border-radius: 10px;
     margin: none;
 }
+
+
