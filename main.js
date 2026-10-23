@@ -1,6 +1,18 @@
+
 const personagens = document.querySelectorAll(".xmen")
 const personagensSenai = document.querySelectorAll(".senai")
 const personasSenai = document.getElementById("personagens-senai")
+const personagens = document.querySelectorAll(".personagem")
+
+const musica = new Audio("sound/tema.mp3")
+musica.loop = true
+musica.volume = 0.4
+
+document.addEventListener("click", function(){
+    musica.play()
+}, {once: true })
+
+const som = new Audio("sound/btn.mp3")
 
 let p1Confirmado = false
 let p2Confirmado = false
@@ -9,9 +21,15 @@ const musica = new Audio("sound/tema.mp3")
 musica.loop = true
 musica.volume = 0.4
 
+
 document.addEventListener("click", function () {
     musica.play()
 }, { once: true })
+            som.currentTime = 0
+            som.play()
+
+            // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
+            const personagemSelecionado = document.querySelector('.selecionado')
 
 const som = new Audio("sound/btn.mp3")
 
