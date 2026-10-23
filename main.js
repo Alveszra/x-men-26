@@ -150,4 +150,4 @@ personagensSenai.forEach(personagem => {
     })
 })
 
-console.log("testandoo o git")
+console.log("nao irei desistir")
