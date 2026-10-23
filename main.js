@@ -131,3 +131,5 @@ personagensSenai.forEach(personagem => {
 
     })
 })
+
+console.log("testando")
