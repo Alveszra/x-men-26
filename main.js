@@ -1,148 +1,162 @@
+// ===================================================
+// X-MEN - SELEÇÃO P1 E P2
+// P1 -> confirmar/cancelar -> habilitar P2 -> confirmar
+// ===================================================
 
-const personagens = document.querySelectorAll(".xmen");
-const personagensSenai = document.querySelectorAll(".senai");
-const personasSenai = document.getElementById("personagens-senai");
+const personagens = document.querySelectorAll('.xmen')
+const personagensSenai = document.querySelectorAll('.senai')
 
-const personagens = document.querySelectorAll(".personagem")
+const listaP1 = document.querySelector('.personagens[data-player="1"]')
+const listaP2 = document.getElementById('personagens-senai')
+const painelP2 = document.getElementById('p2')
 
-const musica = new Audio("sound/tema.mp3")
+const modalP1 = document.getElementById('modal-p1')
+const modalP2 = document.getElementById('modal-p2')
+
+// Compatível também com os IDs antigos de confirmação
+const confirmarP1 = modalP1.querySelector('#btn-confirmar-p1, #btn-confirmar, .btn-confirmar')
+const confirmarP2 = modalP2.querySelector('#btn-confirmar-p2, #btn-confirmar, .btn-confirmar')
+const cancelarP1 = document.getElementById('btn-cancelar-p1')
+const cancelarP2 = document.getElementById('btn-cancelar-p2')
+
+let p1Confirmado = false
+let p2Confirmado = false
+
+// Reutiliza os elementos de áudio já presentes no HTML
+const musica = document.getElementById('tema') || new Audio('sound/tema.mp3')
 musica.loop = true
 musica.volume = 0.4
 
-document.addEventListener("click", function(){
-    musica.play()
-}, {once: true })
+const som = document.getElementById('btn') || new Audio('sound/btn.mp3')
 
-const som = new Audio("sound/btn.mp3")
+// O navegador exige uma interação do usuário para tocar áudio
+const tocarMusica = () => musica.play().catch(() => {})
+document.addEventListener('click', tocarMusica, { once: true })
 
-let p1Confirmado = false;
-let p2Confirmado = false;
+function tocarSom() {
+    som.currentTime = 0
+    som.play().catch(() => {})
+}
 
+function modalAberto(modal) {
+    return !modal.classList.contains('oculto')
+}
 
-const musica = new Audio("sound/tema.mp3");
-musica.loop = true;
-musica.volume = 0.4;
+// Aplica bloqueio real às listas: impede mouse, clique e hover
+function atualizarEstadoJogadores() {
+    listaP1.classList.toggle('bloqueado', p1Confirmado)
 
-            som.currentTime = 0
-            som.play()
+    const p2Bloqueado = !p1Confirmado || p2Confirmado
+    listaP2.classList.toggle('bloqueado', p2Bloqueado)
 
-            // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
-            const personagemSelecionado = document.querySelector('.selecionado')
+    // Antes de confirmar P1, P2 fica escurecido.
+    // Após confirmar P1, recupera a opacidade normal.
+    listaP2.classList.toggle('opacidade', !p1Confirmado)
+    painelP2.classList.toggle('opacidade', !p1Confirmado)
 
-document.addEventListener(
-  "click",
-  function () {
-    musica.play();
-  },
-  { once: true },
-);
+    listaP1.setAttribute('aria-disabled', String(p1Confirmado))
+    listaP2.setAttribute('aria-disabled', String(p2Bloqueado))
+}
 
-const som = new Audio("sound/btn.mp3");
+function podeEscolherP1() {
+    return !p1Confirmado && !modalAberto(modalP1)
+}
 
-  personagens.forEach((personagem) => {
-    personagem.addEventListener("mouseenter", () => {
-      if (window.innerWidth < 450) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+function podeEscolherP2() {
+    return p1Confirmado && !p2Confirmado && !modalAberto(modalP2)
+}
 
-      if (p1Confirmado) return;
+function mostrarPersonagem(personagem, jogador) {
+    const p1 = jogador === 1
+    const classeSelecionada = p1 ? 'selecionado' : 'selecionado2'
+    const lista = p1 ? listaP1 : listaP2
 
-      som.currentTime = 0;
-      som.play();
+    lista.querySelector(`.${classeSelecionada}`)?.classList.remove(classeSelecionada)
+    personagem.classList.add(classeSelecionada)
 
-      // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
-      const personagemSelecionado = document.querySelector(".selecionado");
+    const id = personagem.id
+    const imagem = document.querySelector(p1 ? '.personagem-grande' : '.personagem-grande-senai')
+    imagem.src = p1
+        ? `./img/card-${id}.png`
+        : `./imagem-grande/imagem-grande-${id}.png`
 
-      // REMOVENDO A CLASSE DE UM PERSONAGEM NAO SELECIONADO
-      personagemSelecionado.classList.remove("selecionado");
+    document.getElementById(p1 ? 'nome-personagem' : 'nome-personagem-senai').innerText =
+        personagem.getAttribute('data-name') || ''
 
-      // ADICIONANDO A CLASSE À UM PERSONAGEM SELECIONADO
-      personagem.classList.add("selecionado");
+    document.getElementById(p1 ? 'descricao-personagem' : 'descricao-personagem-senai').innerText =
+        personagem.getAttribute('data-description') || ''
 
-      //pegar o elemento do personagem grande
-      const imagemPersonagemGrande =
-        document.querySelector(".personagem-grande");
+    tocarSom()
+}
 
-      //alterar a imagem do personagem
-      const idPersonagem = personagem.attributes.id.value;
-
-      imagemPersonagemGrande.src = `./img/card-${idPersonagem}.png`;
-
-      //alterar o nome do personagem selecionado
-      const nomePersonagem = document.getElementById("nome-personagem");
-
-      nomePersonagem.innerText = personagem.getAttribute("data-name");
-
-      //alterar a descrição do personagem selecionado
-      const descricaoPersonagem = document.getElementById(
-        "descricao-personagem",
-      );
-
-      descricaoPersonagem.innerText =
-        personagem.getAttribute("data-description");
-
-      personagem.addEventListener("click", () => {
-        if (p1Confirmado) return;
-
-        document.getElementById("modal-p1").classList.remove("oculto");
-        document
-          .querySelector(".lista-de-personagens")
-          .classList.add("opacidade");
-
-
-      });
-    });
-  });
-
-
-const modal = document.querySelector("#modal");
-const btnConfirmar = document.querySelector("#btn-confirmar");
-const btnNegar = document.querySelector("#btn-Negar");
-
-
-// SENAI
-
-personagensSenai.forEach((personagem) => {
-  personagem.addEventListener(`${evento}`, () => {
+function rolarNoCelular() {
     if (window.innerWidth < 450) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
+}
 
-    som.currentTime = 0;
-    som.play();
+// ---------------- PLAYER 1 ----------------
+personagens.forEach(personagem => {
+    personagem.addEventListener('mouseenter', () => {
+        if (!podeEscolherP1()) return
+        mostrarPersonagem(personagem, 1)
+    })
 
-    // VERIFICAR SE JÁ EXISTE UM PERSONAGEM SELECIONADO
-    const personagemSelecionado = document.querySelector(".selecionado2");
+    personagem.addEventListener('click', () => {
+        if (!podeEscolherP1()) return
+        mostrarPersonagem(personagem, 1)
+        rolarNoCelular()
+        modalP1.classList.remove('oculto')
+    })
+})
 
-    // REMOVENDO A CLASSE DE UM PERSONAGEM NAO SELECIONADO
-    personagemSelecionado.classList.remove("selecionado2");
+confirmarP1.addEventListener('click', () => {
+    if (!modalAberto(modalP1) || p1Confirmado) return
 
-    // ADICIONANDO A CLASSE À UM PERSONAGEM SELECIONADO
-    personagem.classList.add("selecionado2");
+    p1Confirmado = true
+    modalP1.classList.add('oculto')
+    atualizarEstadoJogadores() // Congela P1 e libera P2
+})
 
-    // QUANDO PASSAR O MOUSE EM CIMA DO PERSONAGEM
-    // VAI TROCAR A IMAGEM, NOME E DESCRIÇÃO
+cancelarP1?.addEventListener('click', () => {
+    if (p1Confirmado) return
+    modalP1.classList.add('oculto')
+    // Continua permitindo selecionar personagens no P1
+})
 
-    //pegar o elemento do personagem grande
-    const imagemPersonagemGrande = document.querySelector(
-      ".personagem-grande-senai",
-    );
+// ---------------- PLAYER 2 ----------------
+personagensSenai.forEach(personagem => {
+    personagem.addEventListener('mouseenter', () => {
+        if (!podeEscolherP2()) return
+        mostrarPersonagem(personagem, 2)
+    })
 
-    //alterar a imagem do personagem
-    const idPersonagem = personagem.attributes.id.value;
+    personagem.addEventListener('click', () => {
+        if (!podeEscolherP2()) return
+        mostrarPersonagem(personagem, 2)
+        rolarNoCelular()
+        modalP2.classList.remove('oculto')
+    })
+})
 
-    imagemPersonagemGrande.src = `./imagem-grande/imagem-grande-${idPersonagem}.png`;
+confirmarP2.addEventListener('click', () => {
+    if (!modalAberto(modalP2) || !p1Confirmado || p2Confirmado) return
 
-    //alterar o nome do personagem selecionado
-    const nomePersonagem = document.getElementById("nome-personagem-senai");
+    p2Confirmado = true
+    modalP2.classList.add('oculto')
+    atualizarEstadoJogadores() // Congela a seleção do P2
 
-    nomePersonagem.innerText = personagem.getAttribute("data-name");
+    console.log('Jogadores confirmados:', {
+        p1: listaP1.querySelector('.selecionado')?.id,
+        p2: listaP2.querySelector('.selecionado2')?.id
+    })
+})
 
-    //alterar a descrição do personagem selecionado
-    const descricaoPersonagem = document.getElementById(
-      "descricao-personagem-senai",
-    );
+cancelarP2?.addEventListener('click', () => {
+    if (!p1Confirmado || p2Confirmado) return
+    modalP2.classList.add('oculto')
+    // Continua permitindo selecionar personagens no P2
+})
 
-    descricaoPersonagem.innerText = personagem.getAttribute("data-description");
-  });
-});
+// Estado inicial: P1 livre, P2 bloqueado e escurecido
+atualizarEstadoJogadores()
